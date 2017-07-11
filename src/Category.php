@@ -85,5 +85,16 @@
             return $tasks;
         }
 
+        function update($new_name)
+        {
+            $executed = $GLOBALS['DB']->exec("UPDATE categories SET NAME = '{$new_name}' WHERE id = {$this->getId()}");
+            if ($executed) {
+                $this->setName($new_name);
+                return true;
+            } else {
+                return false;
+            }
+        }
+
     }
 ?>
